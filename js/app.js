@@ -10,6 +10,9 @@ $(".controls li").click(function() {
 });
 
 //2. When new color is pressed
+$("#revealColorSelect").click(function() {
+  $("#colorSelect").fadeToggle(100);
+});
 //3. When color sliders change
 //4. When add color is pressed
   //append the color to the controls list
