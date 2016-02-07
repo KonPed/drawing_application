@@ -14,6 +14,12 @@ $("#revealColorSelect").click(function() {
   $("#colorSelect").fadeToggle(100);
 });
 //3. When color sliders change
+$(".sliders input").change(function() {
+  var redValue = $("#red").val();
+  var greenValue = $("#green").val();
+  var blueValue = $("#blue").val();
+  $("#newColor").css("background-color", "rgb(" + redValue + ", " + greenValue + ", " + blueValue + ")");
+});
 //4. When add color is pressed
   //append the color to the controls list
   //select the new color
