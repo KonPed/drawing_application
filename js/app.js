@@ -28,12 +28,31 @@ $("input[type='range']").change(changeColor);
 //4. When add color is pressed
 $("#addNewColor").click(function() {
   var $addedColor = $("<li></li>");
+  //append the color to the controls list
   $(".controls ul").append($addedColor);
   $addedColor.css("background-color", $("#newColor").css("background-color"));
+  //select the new color
   $addedColor.click();
 });
-  //append the color to the controls list
-  //select the new color
 
 //5. On mouse event on the canvas
+var $canvas = $("canvas");
+var context = $canvas[0].getContext("2d");
+var lastEvent;
+var mouseDown = false;
+$canvas.mousedown(function(e) {
+  mouseDown = true;
+  lastEvent = e;
+}).mousemove(function(e) {
   //Draw lines
+  if (mouseDown) {
+    context.beginPath();
+    context.moveTo(lastEvent.offsetX, lastEvent.offsetY);
+    context.lineTo(e.offsetX, e.offsetY);
+    context.strokeStyle = color;
+    context.stroke();
+    lastEvent = e;
+  }
+}).mouseup(function() {
+  mouseDown = false;
+});
